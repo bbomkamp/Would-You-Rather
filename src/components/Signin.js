@@ -12,13 +12,14 @@ function Signin() {
                 sx={{
                     width: 400,
                     height: 400,
-                    backgroundColor: 'paleturquoise',
+                    backgroundColor: 'purple',
                     borderRadius: 10,
                 }}>
                     
                 <div className='signin-grid-item'>
-                    Sign in
+                    Choose a User
                 </div>
+                
             </Box>
 
         </div>
