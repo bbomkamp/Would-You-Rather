@@ -1,70 +1,92 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
-import './Navbar.css';
+import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
+import {connect } from 'react-redux'
+import { clearAuthedUser } from '../actions/authedUser'
+import { Redirect } from 'react-router-dom'
+import './Navbar.css'
 
 
-function Navbar() {
 
-    const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true);
+class Nav extends Component{
 
-    const handleClick = () => {
-        setClick(!click)
-    }
-    const closeMobileMenu = () => setClick(false);
+  
 
-    const showButton = () => {
-        if (window.innerWidth <= 960) {
-            setButton(false);
-        } else {
-            setButton(true);
-        }
+    handleLogout = (e) => {
+
+        e.preventDefault()
+        const {dispatch} = this.props
+        dispatch(clearAuthedUser())
+      
     }
 
-    useEffect(() => {
+render () {
 
-        showButton()
-    }, [])
+    const { authedUser, users } = this.props
 
-    window.addEventListener('resize', showButton)
+    let authedUserName = ""
+    let avatar = ""
 
-    return (
-        <>
-            <nav className='navbar'>
-                <div className='navbar-container'>
-
-                <Link to='/' className='navbar-logo'
-                          onClick={closeMobileMenu}>
-                        Would You Rather
-                    </Link>
-                    <div className='menu-icon' onClick={handleClick}>
-                        <i className={click ? 'fas fa-times' : 'fas fa-bars'}/>
-                    </div>
-                   
-                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                        <li className='nav-item'>
-                            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                            New Question
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/aboutme' className='nav-links' onClick={closeMobileMenu}>
-                            Leaderboard
-                            </Link>
-                        </li>
-                        <li className='nav-item'>
-                            <Link to='/signin' className='nav-links' onClick={closeMobileMenu}>
-                                Sign in
-                            </Link>
-                        </li>
-                       
-                    </ul>
+     if( authedUser !== null)
+    { 
+    authedUserName = users[authedUser].name
+    avatar = users[authedUser].avatarURL
+    }else{
+        return <Redirect to={'/'} /> 
+    }
 
 
+    console.log('authedUser', authedUser)
+    console.log('users', users)
+
+    console.log('name', authedUserName)
+
+    return(
+        <div className='nav-bar'>
+            <div>
+            <nav className='nav'>
+                        <ul>
+                            <li className='nav-button'>
+                                <NavLink to='/' exact activeClassName='active'>
+                                    Home
+                                </NavLink> 
+                            </li>
+                            <li className='nav-button'>
+                                <NavLink to='/new' activeClassName='active'>
+                                    New Question
+                                </NavLink>
+                            </li>
+                            <li className='nav-button'>
+                                <NavLink to='/leaderboard' activeClassName='active'>
+                                    Leader Board
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-            </nav>
-        </>
+                {authedUserName !== "" &&
+                <div className='nav-user' >
+                        <div className='nav-right' style={{cursor: 'pointer'}} onClick={(e) => this.handleLogout(e)}>
+                            <NavLink to='/' exact activeClassName='active'>
+                                Logout
+                            </NavLink>
+                        </div>
+                        <div className='nav-right'> <img className='avatar' src={avatar} alt={`Avatar of author: ${authedUserName}`} /> </div>
+                        <div className='nav-right' > Hello,  {authedUserName} </div>
+                       
+                </div>
+                }
+         
+        </div>
     )
+    }
 }
 
-export default Navbar;
+function mapStateToProps ({authedUser, users}){
+    return{
+        authedUser,
+        users,
+        userIds: Object.keys(users),  
+    }
+}
+
+export default connect(mapStateToProps)(Nav)

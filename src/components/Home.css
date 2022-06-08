@@ -71,3 +71,16 @@ video {
         width: 100%;
     }
 }
+
+.main-view-container {
+    background-color: rgb(152, 211, 204);
+    background: url('../../public/10896553.jpeg') center center/cover no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+}

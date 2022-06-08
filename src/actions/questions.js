@@ -1,5 +1,4 @@
 import { saveQuestion, saveQuestionAnswer } from "../helpers/api"
-import { showLoading, hideLoading } from "react-redux-loading"
 import { answerQuestionUser } from "./users"
  
 export const ADD_QUESTION = 'ADD_QUESTION'
@@ -56,14 +55,13 @@ export function handleAnswerQuestion(question, answer){
     console.log('Test Question ID', question.id)
     console.log('Test Answer', answer)
     dispatch(answerQuestion(question, answer, authedUser))
-    dispatch(answerQuestionUser(question, answer, authedUser))
-    dispatch(showLoading())
+
  
     return saveQuestionAnswer({
         authedUser, qid, answer
     }).catch((e) => {
         console.warn('Error in saveQuestion: ' , e)
-    }).then(() => dispatch(hideLoading()))
+    })
    
    
  
@@ -76,7 +74,7 @@ export function handleAddQuestion(q1Text, q2Text){
    return(dispatch, getState) => {
        const {authedUser } = getState()
  
-       dispatch(showLoading())
+       
    
        return saveQuestion({
         optionOneText: q1Text,
@@ -84,7 +82,6 @@ export function handleAddQuestion(q1Text, q2Text){
         author: authedUser
        })
        .then((question) => dispatch(addQuestion(question)))
-       .then(() => dispatch(hideLoading()))
    }
 }
  

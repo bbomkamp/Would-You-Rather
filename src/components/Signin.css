@@ -16,7 +16,26 @@
     justify-content: center;
     align-items: center;
     height: 80px;
+    
     max-width: 1500px;
     color: rgb(255, 255, 255);
     font-size: 35px;
 }
+.btn {
+    text-transform: uppercase;
+    margin: 35px auto;
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,.29);
+    cursor: pointer;
+    background: #fff;
+    font-size: 16px;
+    width: 250px;
+    position: center;
+    border-radius: 25px;
+  }
+  .avatar {
+    height: 30px;
+    border-radius: 25px;
+  }
+
+  
