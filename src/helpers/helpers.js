@@ -1,15 +1,54 @@
-export function formatDate (timestamp) {
-    const d = new Date(timestamp)
-    const time = d.toLocaleTimeString('en-US')
-    return time.substr(0, 5) + time.slice(-2) + ' | ' + d.toLocaleDateString()
+ 
+ 
+export function checkAnswers(id,users,authedUser)
+{
+  const currentUser = users[authedUser]
+  const currentUserAnswers = currentUser.answers
+  const findQuestion = currentUserAnswers[id]
+ 
+  let yourAnswer = ''
+ 
+  switch (findQuestion) {
+      case 'optionOne':
+          yourAnswer = 1;
+          break;
+      case 'optionTwo':
+          yourAnswer = 2;
+          break;
+      default:
+          yourAnswer = 0
+          break;
   }
  
+  return yourAnswer
  
+}
  
+export function scoreTotal(users){
  
-export function formatQuestion (question, users, authedUser) {
+  let scores = [];
  
+  for(let i in users){
+    let user = users[i];
+    let questionsAnswered = Object.keys(user.answers).length;
+    let createdQuestions = user.questions.length;
+    let totalScore = questionsAnswered + createdQuestions;
  
+    scores.push({
+      name: user.name,
+      avatar: user.avatarURL,
+      answered: questionsAnswered,
+      created: createdQuestions,
+      score: totalScore
+    })
+  }
+  
+  scores.sort((a,b) => (a.score > b.score) ? -1 : 1)    
+  return scores;
+}
+ 
+
+export function formatQuestion (question, users) {
  
   const { id, author, timestamp, optionOne, optionTwo } = question
  
@@ -33,59 +72,5 @@ export function formatQuestion (question, users, authedUser) {
     oneCount: optionOneCount,
     twoCount: optionTwoCount,
     totalCount: totalCount
- 
-   
   }
 }
- 
-export function checkAnswers(id,users,authedUser)
-{
-  const activeUser = users[authedUser]
-  const activeUserAnswers = activeUser.answers
-  const findQuestion = activeUserAnswers[id]
- 
-  let yourAnswer = ''
- 
-  switch (findQuestion) {
-      case 'optionOne':
-          yourAnswer = 1;
-          break;
-      case 'optionTwo':
-          yourAnswer = 2;
-          break;
-      default:
-          yourAnswer = 0
-          break;
-  }
- 
-  return yourAnswer
- 
-}
- 
-export function tallyScores(users){
- 
-  let scores = [];
- 
-  for(let u in users){
-    let user = users[u];
-    let answeredQuestions = Object.keys(user.answers).length;
-    let createdQuestions = user.questions.length;
-    let totalScore = answeredQuestions + createdQuestions;
- 
-    scores.push({
-      name: user.name,
-      avatar: user.avatarURL,
-      answered: answeredQuestions,
-      created: createdQuestions,
-      score: totalScore
- 
-    })
- 
-  }
-    //Sort Scores  
-  scores.sort((a,b) => (a.score > b.score) ? -1 : 1)    
-  return scores;
- 
-}
- 
-

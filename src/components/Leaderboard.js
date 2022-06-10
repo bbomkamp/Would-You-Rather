@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Navbar from './Navbar'
-import { tallyScores } from '../helpers/helpers'
+import { scoreTotal } from '../helpers/helpers'
 import Box from '@mui/material/Box';
 
 
@@ -51,7 +51,7 @@ return(
 function mapStateToProps({authedUser, users, questions}, props ){
 
    return { 
-        scores: tallyScores(users),
+        scores: scoreTotal(users),
         authedUser,
     }
 }

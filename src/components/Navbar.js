@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom'
 import Grid from '@mui/material/Grid';
 
 
-class Nav extends Component {
+class Navbar extends Component {
 
     handleLogout = (e) => {
 
@@ -85,4 +85,4 @@ function mapStateToProps({ authedUser, users }) {
     }
 }
 
-export default connect(mapStateToProps)(Nav)
+export default connect(mapStateToProps)(Navbar)

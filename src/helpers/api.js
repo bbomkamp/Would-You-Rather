@@ -3,7 +3,7 @@ import {
     _getUsers,
     _saveQuestion,
     _saveQuestionAnswer
-} from './_DATA'
+} from '../_DATA'
  
 export function getInitialData(){
     return Promise.all([  
