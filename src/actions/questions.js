@@ -1,23 +1,21 @@
 import { saveQuestion, saveQuestionAnswer } from "../helpers/api"
-import { answerQuestionUser } from "./users"
  
 export const ADD_QUESTION = 'ADD_QUESTION'
 export const ANSWER_QUESTION = 'ANSWER_QUESTION'
-export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
-export const TOGGLE_SHOW_ANSWERED = 'TOGGLE_SHOW_ANSWERED'
+export const RECEIVE_QUESTION = 'RECEIVE_QUESTION'
+export const TOGGLE_ANSWERED = 'TOGGLE_ANSWERED'
  
  
 export function receiveQuestions (questions) {
     return{
-        type: RECEIVE_QUESTIONS,
+        type: RECEIVE_QUESTION,
         questions,
     }
- 
 }
  
 export function toggleShowAnswered() {
     return{
-        type: TOGGLE_SHOW_ANSWERED
+        type: TOGGLE_ANSWERED
     }
 }
  
@@ -33,8 +31,7 @@ export function answerQuestion(question, answer, authedUser){
         type: ANSWER_QUESTION,
         question,
         answer,
-        user: authedUser
-       
+        user: authedUser 
     }
 }
  
@@ -62,11 +59,7 @@ export function handleAnswerQuestion(question, answer){
     }).catch((e) => {
         console.warn('Error in saveQuestion: ' , e)
     })
-   
-   
- 
     }
- 
 }
  
 export function handleAddQuestion(q1Text, q2Text){
@@ -74,8 +67,6 @@ export function handleAddQuestion(q1Text, q2Text){
    return(dispatch, getState) => {
        const {authedUser } = getState()
  
-       
-   
        return saveQuestion({
         optionOneText: q1Text,
         optionTwoText: q2Text,
@@ -84,5 +75,3 @@ export function handleAddQuestion(q1Text, q2Text){
        .then((question) => dispatch(addQuestion(question)))
    }
 }
- 
-

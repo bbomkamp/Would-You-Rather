@@ -1,9 +1,9 @@
-export const RECEIVE_USERS = 'RECEIVE_USERS'
+export const GET_USERS = 'GET_USERS'
 export const ADD_ANSWER = 'ADD_ANSWER'
 
 export function receiveUsers (users) {
     return{
-        type: RECEIVE_USERS,
+        type: GET_USERS,
         users,
     }
 }
@@ -14,7 +14,5 @@ export function answerQuestionUser(question, answer, authedUser){
         question,
         answer,
         user: authedUser
-
-        
     }
 }

@@ -8,24 +8,24 @@ import Box from '@mui/material/Box';
 
 class NewQuestion extends Component {
     state = {
-        q1Text: '',
-        q2Text: '',
-        toHome: false,
+        firstOption: '',
+        secondOption: '',
+        home: false,
     }
 
     handleChangeQ1 = (e) => {
-        const q1Text = e.target.value
+        const firstOption = e.target.value
 
         this.setState(() => ({
-            q1Text
+            firstOption
         }))
     }
 
     handleChangeQ2 = (e) => {
-        const q2Text = e.target.value
+        const secondOption = e.target.value
 
         this.setState(() => ({
-            q2Text
+            secondOption
         }))
     }
 
@@ -33,16 +33,16 @@ class NewQuestion extends Component {
 
         e.preventDefault()
 
-        const { q1Text, q2Text } = this.state
+        const { firstOption, secondOption } = this.state
         const { dispatch, id } = this.props
 
         //Add Dispatch to handleAddQuestion
-        dispatch(handleAddQuestion(q1Text, q2Text))
+        dispatch(handleAddQuestion(firstOption, secondOption))
 
         this.setState(() => ({
-            q1Text: '',
-            q2Text: '',
-            toHome: id ? false : true,
+            firstOption: '',
+            secondOption: '',
+            home: id ? false : true,
 
         }))
 
@@ -51,9 +51,9 @@ class NewQuestion extends Component {
     }
 
     render() {
-        const { q1Text, q2Text, toHome } = this.state
+        const { firstOption, secondOption, home } = this.state
 
-        if (toHome === true) {
+        if (home === true) {
             return <Redirect to={'/'} />
         }
 
@@ -66,19 +66,19 @@ class NewQuestion extends Component {
                     <div className='center-h2'>Create a New Question</div>
                     <form className='new-question' onSubmit={this.handleSubmit}>
                         <div className='center'>
-                            <label for='q1Text'>Would You Rather </label>
+                            <label for='firstOption'>Would You Rather </label>
                         </div>
-                        <input type='text' id='q1Text' name='q1Text' value={q1Text} maxLength={255} placeholder='Please enter your first choice' className='textarea' onChange={this.handleChangeQ1} />
+                        <input type='text' id='firstOption' name='firstOption' value={firstOption} maxLength={255} placeholder='Please enter your first choice' className='textarea' onChange={this.handleChangeQ1} />
                         <br />
                         <div className='center'>
-                            <label for='q2Text'>Or </label>
+                            <label for='secondOption'>Or </label>
                         </div>
-                        <input type='text' id='q2Text' name='q2Text' value={q2Text} maxLength={255} placeholder='Please enter your second choice' className='textarea' onChange={this.handleChangeQ2} />
+                        <input type='text' id='secondOption' name='secondOption' value={secondOption} maxLength={255} placeholder='Please enter your second choice' className='textarea' onChange={this.handleChangeQ2} />
                         <br />
                         <Button
                             variant='contained'
                             type='submit'
-                            disabled={q1Text === '' || q2Text === ''}>
+                            disabled={firstOption === '' || secondOption === ''}>
                             Submit
                         </Button>
                     </form>

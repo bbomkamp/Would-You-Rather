@@ -1,24 +1,24 @@
-import { ADD_QUESTION, RECEIVE_QUESTIONS, ANSWER_QUESTION, TOGGLE_SHOW_ANSWERED } from "../actions/questions";
+import { ADD_QUESTION, RECEIVE_QUESTION, ANSWER_QUESTION, TOGGLE_ANSWERED } from "../actions/questions";
  
 export default function question(state ={}, action){
     switch(action.type){
  
-        case TOGGLE_SHOW_ANSWERED :
+        case TOGGLE_ANSWERED :
  
-            const {showAnsweredValue} = state?.showAnswered ?? {}
-            let showAnseredNewValue = true;
+            const {showAnswered} = state?.showAnswered ?? {}
+            let showNewAnsered = true;
  
-            if(showAnsweredValue === true)
+            if(showAnswered === true)
             {
-                showAnseredNewValue = false;
+                showNewAnsered = false;
             }
            
             return{
                 ...state,
-                showAnswered:showAnseredNewValue
+                showAnswered:showNewAnsered
             }
            
-        case RECEIVE_QUESTIONS :
+        case RECEIVE_QUESTION :
        
            return {
                ...state,

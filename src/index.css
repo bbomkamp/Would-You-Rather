@@ -21,6 +21,7 @@ code {
 .question-inner-box{
   margin-bottom: 20px;
   min-width: 360px;
+  
 }
 
 .new-question {
@@ -29,6 +30,7 @@ code {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  
   
 }
 
@@ -99,7 +101,7 @@ code {
 {
   flex: 1
 }
-.avatar {
+.profilePicture {
   height: 30px;
   border-radius: 25px;
 }
@@ -112,8 +114,7 @@ code {
 .nav-right{
   float: right;
   color:white;
-  margin-left: 10px; 
-  margin-right: 20px;
+  margin-right: 20px; 
   height: 30px;
   text-align: end;
   
@@ -168,7 +169,6 @@ code {
 
 .center {
   text-align: center;
-  
 }
 
 .center-h2 {
@@ -286,7 +286,7 @@ li {
 .leaderboard-frame {
   margin: auto;
   width: 600px;
-  border: 5px solid #333;
+  border: 5px solid rgb(0, 0, 0);
   height: 200px;
   position: relative;
   display: block;
@@ -316,9 +316,9 @@ li {
 }
 
 .leaderboard-score{
-  border: 1px solid #dad7d7;
-  border-radius: 3px;
-  float: left;
+  /* border: 1px solid #dad7d7;
+  border-radius: 33px;
+  float: left; */
   background: linear-gradient(90deg, rgb(77, 47, 149) 0%, rgb(149, 36, 137) 100%);
 }
 
@@ -382,7 +382,7 @@ li {
   width:40px;
   border: 1px solid silver;
   border-radius: 25px;
-  background-color: rgb(211, 104, 16);
+  background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: center;
   align-items: center;

@@ -11,7 +11,6 @@ class HomePage extends Component {
         showAnswered: false
     }
 
-
     handleShowAnswered = (e) => {
 
         let newShowAnswered = false
@@ -25,13 +24,10 @@ class HomePage extends Component {
         this.setState(() => ({
             showAnswered: newShowAnswered
         }))
-
-
     }
 
     render() {
         return (
-
             <div>
                 <Navbar />
                 <Box className='box'>
@@ -48,23 +44,18 @@ class HomePage extends Component {
                     </div>
                 </Box>
             </div>
-
         )
     }
 }
 
 function mapStateToProps({ questions }) {
 
-
-    let sortedQuestions = Object.values(questions).sort((a, b) => (a.timestamp < b.timestamp) ? 1 : -1);
-
-    let sortedIds = sortedQuestions.map(a => a.id);
+    let questionsSorted = Object.values(questions).sort((a, b) => (a.timestamp < b.timestamp) ? 1 : -1);
+    let ids = questionsSorted.map(a => a.id);
 
 
     return {
-
-        questionIds: sortedIds
-
+        questionIds: ids
     }
 }
 

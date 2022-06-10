@@ -6,14 +6,11 @@ export function setAuthedUser (id) {
         type: SET_AUTHED_USER,
         id,
     }
-
 }
 
-export function clearAuthedUser (id) {
+export function clearUser (id) {
     return{
         type: CLEAR_AUTHED_USER,
         id,
     }
-
 }
-

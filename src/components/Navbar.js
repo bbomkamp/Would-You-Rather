@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { clearAuthedUser } from '../actions/authedUser'
+import { clearUser } from '../actions/authedUser'
 import { Redirect } from 'react-router-dom'
 import Grid from '@mui/material/Grid';
 
@@ -12,19 +12,19 @@ class Nav extends Component {
 
         e.preventDefault()
         const { dispatch } = this.props
-        dispatch(clearAuthedUser())
+        dispatch(clearUser())
     }
 
     render() {
 
         const { authedUser, users } = this.props
         let authedUserName = ""
-        let avatar = ""
+        let profilePicture = ""
 
 
         if (authedUser !== null) {
             authedUserName = users[authedUser].name
-            avatar = users[authedUser].avatarURL
+            profilePicture = users[authedUser].avatarURL
         }
         else {
             return <Redirect to={'/'} />
@@ -66,16 +66,13 @@ class Nav extends Component {
                                         Logout
                                     </NavLink>
                                 </div>
-                                <div className='nav-right'> <img className='avatar' src={avatar} alt={``} /> </div>
-                                <div className='nav-right' > Hello,  {authedUserName} </div>
-
+                                <div className='nav-right'> <img className='profilePicture' src={profilePicture} alt={``} /> </div>
+                                <div className='nav-right' > {authedUserName} </div>
                             </div>
                         }
                     </Grid>
                 </Grid>
             </div>
-
-
         )
     }
 }

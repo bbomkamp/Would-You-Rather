@@ -12,11 +12,8 @@ render(){
 
     const {scores} = this.props;
 
-    console.log('User Scores', scores);
-
 return(
-    <div>
-             
+    <div>    
          <Navbar /> 
          <Box className='box'>
               <div className='center'>
@@ -32,14 +29,11 @@ return(
                             <div className='leaderboard-name'>{user.name}</div>
                             <div className='leaderboard-count'>Answered Questions {user.answered}</div>
                             <div className='leaderboard-count'>Created Questions {user.created}</div>
-
                     </div>
                     <div className='leaderboard-right'>
-                    
                     <div className='leaderboard-right-inset'>
                     <div className='leaderboard-score-title'>Score </div>
                         <div className='leaderboard-score'>
-                           
                             <div className='leaderboard-score-value'>{user.score} </div>
                         </div>
                     </div>
@@ -47,25 +41,18 @@ return(
                 </div>
               ))}
               </div>
-
-
               </div>
               </Box>
     </div>
-
 )
-
-}
-    
+}   
 }
 
-function mapStateToProps({authedUser, users, questions}, props )
-{
-    
+function mapStateToProps({authedUser, users, questions}, props ){
+
    return { 
         scores: tallyScores(users),
         authedUser,
-      
     }
 }
 

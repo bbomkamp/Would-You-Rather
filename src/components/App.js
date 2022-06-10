@@ -38,10 +38,8 @@ class App extends Component {
                             </div>
                         }
                     </div>
-
                 </Fragment>
             </Router>
-
         )
     }
 }

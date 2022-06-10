@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { formatQuestion, formatDate, checkAnswers } from '../helpers/helpers'
+import { formatQuestion, checkAnswers } from '../helpers/helpers'
 import { Link, withRouter } from 'react-router-dom'
 
 class QuestionButton extends Component {
@@ -8,7 +8,7 @@ class QuestionButton extends Component {
 
     render() {
         const { question, authedUser, users, showAnswered } = this.props
-        const { id, timestamp, author, avatar, oneText, twoText } = question
+        const { id, author, avatar, oneText, twoText } = question
 
 
         let yourAnswer = checkAnswers(id, users, authedUser)
@@ -32,7 +32,7 @@ class QuestionButton extends Component {
 
                     <div className='question-frame'>
 
-                        <div className='asked-by'>{author} Asks :  <span>Would You Rather?</span> </div>
+                        <div className='asked-by'>{author} Asks:  <span>Would You Rather?</span> </div>
 
                         <div className='question-author'> <img src={avatar} alt={`Avatar of author: ${author}`} className='large-avatar' /> </div>
                         <div className='right-results'>
@@ -41,7 +41,6 @@ class QuestionButton extends Component {
                             <div>2. {twoText}</div>
 
                             <div className='question-button'>{yourAnswer !== 0 && <Link to={`/question/${id}`}> View Question </Link>}{yourAnswer === 0 && <Link to={`/question/${id}`}> Answer Question </Link>}</div>
-                            {/* <div className='info-stamp'> {yourAnswer !== 0 && <span>  You Answered: {yourAnswer}</span>} </div> */}
                         </div>
                     </div>
                 </div>
@@ -51,9 +50,7 @@ class QuestionButton extends Component {
         else {
             return (<Fragment></Fragment>)
         }
-
     }
-
 }
 
 function mapStateToProps({ authedUser, users, questions }, { id, showAnswered }) {
