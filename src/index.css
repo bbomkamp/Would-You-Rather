@@ -15,6 +15,7 @@ code {
 .question-results-box{
   margin-bottom: 20px;
   min-width: 360px;
+  
 }
 
 .question-inner-box{
@@ -28,6 +29,7 @@ code {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  
 }
 
 .question-button {
@@ -43,23 +45,28 @@ code {
 .question-list{
  text-align: center;
  margin: 0px auto;
- width: 600px;
+ width: 100%;
+ height: 110%;
+ align-content: center;
 
 }
 
 .question-box{
   margin-top: 15px;
+  
 }
 
-.question-separator{
-  margin-left: 50px;
-}
 
 .question-frame {
+  margin: auto;
   width: 600px;
-  border: 3px solid #333;
+  border: 5px solid #333;
   height: 200px;
-  overflow:hidden; 
+  position: relative;
+  display: block;
+  overflow:hidden;
+  margin-top: 2px;
+  border-radius: 25px;
 }
 
 
@@ -105,10 +112,11 @@ code {
 .nav-right{
   float: right;
   color:white;
-  margin-left: 10px;
+  margin-left: 10px; 
   margin-right: 20px;
-  height:30px;
-  overflow: hidden;
+  height: 30px;
+  text-align: end;
+  
  
 }
 
@@ -120,7 +128,9 @@ code {
   position: relative;
   display: block;
   overflow:hidden;
-  margin-top: 40px;
+  margin-top: 2px;
+  border-radius: 25px;
+  
  
 }
 
@@ -129,8 +139,10 @@ code {
   height:20px;
   width: 100%;
   padding: 10px;
-  background-color: rgb(226, 222, 222);
+  background: linear-gradient(90deg, rgb(77, 47, 149) 0%, rgb(149, 36, 137) 100%);
   font-weight: bold;
+  color: white;
+  text-align: center;
 }
 .left-results{
   width: 30%;
@@ -147,16 +159,25 @@ code {
  
   display:inline;
   float:left;
-  padding-left: 25px;
+  padding-left: 50px;
   margin-top: 15px;
-  text-align: left;
+  text-align: center;
  
   
 }
 
 .center {
   text-align: center;
+  
 }
+
+.center-h2 {
+  text-align: center;
+  font-size: x-large;
+  padding: 20px;
+}
+
+
 
 .info-stamp{
   width: 100%;
@@ -184,14 +205,20 @@ li {
 .nav-bar{
   background: linear-gradient(90deg, rgb(77, 47, 149) 0%, rgb(149, 36, 137) 100%);
     height: 80px;
-    display: flex;
-    justify-content: center;
+    display:flex;
+    /* justify-content: flex-start; */
     align-items: center;
     font-size: 1.2rem;
     position: sticky;
     top: 0;
     z-index: 999;
   
+}
+
+.nav-title{
+  color: white;
+  font-size: larger;
+  text-align: center;
 }
 
 
@@ -207,8 +234,8 @@ li {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  /* overflow: hidden; */
   height:30px;
+  align-items: flex-start;
 }
 
 .nav li a {
@@ -229,11 +256,135 @@ li {
 
 .nav-right a {
   color: white;
-  text-align: center;
-  padding: 14px 16px;
+  /* text-align: flex-end; */
+  /* padding: 14px 16px; */
   text-decoration: none;
+  text-align: end;
 }
 
 .nav-right a:hover{
-  background-color: #111;
+  background-color: #fff;
+        color: #242424;
+        border-radius: 50px;
+}
+
+.box{
+  background: url('../public/10896553.jpeg') center center/cover no-repeat;
+  height: 1500px;
+}
+
+.asked-by{
+  border: 1px solid #333;
+  height:20px;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(226, 222, 222);
+  font-weight: bold;
+  text-align: center;
+}
+
+.leaderboard-frame {
+  margin: auto;
+  width: 600px;
+  border: 5px solid #333;
+  height: 200px;
+  position: relative;
+  display: block;
+  overflow:hidden;
+  margin-top: 2px;
+  border-radius: 25px;
+  
+  
+}
+
+.leaderboard-title{
+  font-weight: 700;
+  font-size: 26pt ;
+  margin: 40px;
+}
+
+.leaderboard-name{
+  font-weight: 700;
+  font-size: 16pt ;
+  margin-top: 30px;
+}
+
+.leaderboard-count{
+  font-weight: 700;
+  font-size: 12pt ;
+  margin-top: 20px;
+}
+
+.leaderboard-score{
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  float: left;
+  background: linear-gradient(90deg, rgb(77, 47, 149) 0%, rgb(149, 36, 137) 100%);
+}
+
+.leaderboard-left{
+  float: left;
+  width: 150px;
+  border-right: 1px solid silver;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+ 
+  
+}
+
+.leaderboard-center{
+  float:left;
+  width: 300px;
+  border-right: 1px solid silver;
+  height:100%;
+ 
+
+}
+
+.leaderboard-right{
+ 
+  width: 145px;
+  height:100%;
+  display: flex;
+  text-align: center;
+}
+
+.leaderboard-right-inset{
+  height:100%;
+  justify-content:baseline;
+  align-items:center;
+  margin-left: 20px;
+}
+
+.leaderboard-score{
+  height:100px;
+  width:80px;
+  border: 1px solid silver;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.leaderboard-score-title{
+  font-weight: 700;
+  font-size: 12pt ;
+  margin-top: 20px;
+ text-align: center;
+}
+
+.leaderboard-score-value{
+  height:40px;
+  width:40px;
+  border: 1px solid silver;
+  border-radius: 25px;
+  background-color: rgb(211, 104, 16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
 }

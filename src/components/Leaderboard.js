@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Navbar from './Navbar'
 import { tallyScores } from '../helpers/helpers'
+import Box from '@mui/material/Box';
+
 
 class Leaderboard extends Component {
 
@@ -15,10 +17,11 @@ render(){
 return(
     <div>
              
-                <div> <Navbar /> </div>
+         <Navbar /> 
+         <Box className='box'>
               <div className='center'>
                   
-                  <div className='leaderboard-title'>LeaderBoard</div>
+                  <div>Leaderboard</div>
 
                   <div className='question-list'>
               {scores.map((user) => (
@@ -47,7 +50,7 @@ return(
 
 
               </div>
-               
+              </Box>
     </div>
 
 )
