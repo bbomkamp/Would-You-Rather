@@ -1,42 +1,51 @@
-import { ADD_QUESTION, RECEIVE_QUESTION, ANSWER_QUESTION, TOGGLE_ANSWERED } from "../actions/questions";
- 
-export default function question(state ={}, action){
-    switch(action.type){
- 
-        case TOGGLE_ANSWERED :
- 
-            const {showAnswered} = state?.showAnswered ?? {}
-            let showNewAnsered = true;
- 
-            if(showAnswered === true)
-            {
-                showNewAnsered = false;
+import { ADD_QUESTION, RECEIVE_QUESTIONS, ANSWER_QUESTION, TOGGLE_ANSWERED } from "../actions/questions";
+
+/**
+ * question()
+ * Reducer
+ * Takes the current State and an Action and returns the new State.
+ * Handles the State of Questions asked, answered, and added by using
+ * Switchs statements.
+ * 
+ * @param {state} state 
+ * @param {action} action 
+ * @returns state
+ */
+export default function question(state = {}, action) {
+    switch (action.type) {
+
+        case TOGGLE_ANSWERED:
+            const { showAnsweredValue } = state?.showAnswered ?? {}
+            let showNewAnsweredValue = true;
+
+            if (showAnsweredValue === true) {
+                showNewAnsweredValue = false;
             }
-           
-            return{
+
+            return {
                 ...state,
-                showAnswered:showNewAnsered
+                showAnswered: showNewAnsweredValue
             }
-           
-        case RECEIVE_QUESTION :
-       
-           return {
-               ...state,
-               ...action.questions
- 
-            }
-            case ADD_QUESTION :
-                const { question } = action
- 
-                return{
-                    ...state,
-                    [action.question.id]: action.question,
-                }
-        case ANSWER_QUESTION :
- 
-            return{
+
+        case RECEIVE_QUESTIONS:
+
+            return {
                 ...state,
-                [action.question.id]:{
+                ...action.questions
+
+            }
+        case ADD_QUESTION:
+            const { question } = action
+
+            return {
+                ...state,
+                [action.question.id]: action.question,
+            }
+        case ANSWER_QUESTION:
+
+            return {
+                ...state,
+                [action.question.id]: {
                     ...state[action.question.id],
                     [action.answer]: {
                         ...action.question[action.answer],
@@ -44,9 +53,8 @@ export default function question(state ={}, action){
                     }
                 }
             }
- 
-        default :
-        return state
+
+        default:
+            return state
     }
 }
-

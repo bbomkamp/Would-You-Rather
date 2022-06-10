@@ -287,7 +287,7 @@ li {
   margin-top: 20px;
 }
 
-.leaderboard-score {
+.score {
   background: linear-gradient(90deg, rgb(77, 47, 149) 0%, rgb(149, 36, 137) 100%);
 }
 
@@ -322,7 +322,7 @@ li {
   margin-left: 20px;
 }
 
-.leaderboard-score {
+.score {
   height: 100px;
   width: 80px;
   border: 1px solid silver;
@@ -332,14 +332,14 @@ li {
   align-items: center;
 }
 
-.leaderboard-score-title {
+.score-title {
   font-weight: 700;
   font-size: 12pt;
   margin-top: 20px;
   text-align: center;
 }
 
-.leaderboard-score-value {
+.score-value {
   height: 40px;
   width: 40px;
   border: 1px solid silver;

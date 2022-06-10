@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { handleAddQuestion } from '../actions/questions'
+import { addQuestionHelper } from '../actions/questions'
 import Navbar from './Navbar'
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -36,8 +36,8 @@ class NewQuestion extends Component {
         const { firstOption, secondOption } = this.state
         const { dispatch, id } = this.props
 
-        //Add Dispatch to handleAddQuestion
-        dispatch(handleAddQuestion(firstOption, secondOption))
+        //Add Dispatch to addQuestionHelper
+        dispatch(addQuestionHelper(firstOption, secondOption))
 
         this.setState(() => ({
             firstOption: '',
