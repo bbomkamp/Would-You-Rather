@@ -8,6 +8,25 @@ The user can then answer either/or questions. Users can even submit their own ei
 
 Those results are logged and compared to the choices of other users.
 
+## Installation
+
+Clone the repository, change directories, and use NPM to install the dependencies.
+
+```bash
+$ git clone https://github.com/bbomkamp/Would-You-Rather.git
+$ cd Would-You-Rather
+$ npm install
+```
+
+## Usage
+
+The project can be run with
+
+- `npm start`
+
+The project can be viewed in the browser at
+
+- [http://localhost:3000](http://localhost:3000)
 
 # Sign In
 ![](Login.png)

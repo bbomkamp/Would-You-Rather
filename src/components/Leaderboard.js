@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Navbar from './Navbar'
@@ -11,7 +11,7 @@ class Leaderboard extends Component {
     render() {
 
         const { scores } = this.props;
-
+        
         return (
             <div>
                 <Navbar />
@@ -22,9 +22,10 @@ class Leaderboard extends Component {
 
                         <div className='question-list'>
                             {scores.map((user) => (
-                                <div className='leaderboard-frame'>
+                                
+                                <div className='leaderboard-frame' key={user.name} >
 
-                                    <div className='leaderboard-left'> <img src={user.avatar} alt={`Avatar of author: ${user.name}`} className='large-avatar' /> </div>
+                                    <div className='leaderboard-left'> <img src={user.avatar} alt={``} className='large-avatar' /> </div>
                                     <div className='leaderboard-center'>
                                         <div className='leaderboard-name'>{user.name}</div>
                                         <div className='leaderboard-count'>Answered Questions {user.answered}</div>
